@@ -1,6 +1,8 @@
 let xhr = new XMLHttpRequest();
 
-xhr.open("GET", "http://localhost:3000/contents", true)
+let url = "http://localhost:3000/contents"
+
+xhr.open("GET", url, true)
 
 xhr.onload = function() {
     let html = "";
@@ -14,7 +16,7 @@ xhr.onload = function() {
 xhr.send()
 
 function CheckExist(nev) {
-    return fetch(`http://localhost:3000/contents?nev=${nev}`)
+    return fetch(`${url}?nev=${nev}`)
         .then(response => response.headers.get("content-length"))
 }
 
@@ -32,7 +34,7 @@ async function Save() {
     switch (exist) {
         case 0:
             document.getElementById("status").innerHTML = ""
-            xhr.open("POST", "http://localhost:3000/contents", true)
+            xhr.open("POST", url, true)
             xhr.send(JSON.stringify(data))
             break;
 
