@@ -13,15 +13,32 @@ xhr.onload = function() {
 
 xhr.send()
 
-function Save() {
+function CheckExist(nev) {
+    return fetch(`http://localhost:3000/contents?nev=${nev}`)
+        .then(response => response.headers.get("content-length"))
+}
+
+async function Save() {
     let data = {}
     data.nev = document.getElementById("u_nev").value
     data.szam = document.getElementById("u_text").value
-    xhr.open("POST", "http://localhost:3000/contents", true)
-    xhr.send(JSON.stringify(data))
+
+    let exist = 0
+    let contentLength = await CheckExist(data.nev)
+    if (contentLength != 2) {
+        exist = 1
+    }
+
+    switch (exist) {
+        case 0:
+            document.getElementById("status").innerHTML = ""
+            xhr.open("POST", "http://localhost:3000/contents", true)
+            xhr.send(JSON.stringify(data))
+            break;
+
+        case 1:
+            document.getElementById("status").innerHTML = "<h3>HIBA! A név már létezik az adatbázisban!</h3>"
+            break;
+    }
 
 }
-
-//let conts = new Array();
-
-//conts.join(XMLHttpRequest.)
