@@ -8,7 +8,11 @@ xhr.onload = function() {
     let html = "";
     let test = JSON.parse(xhr.responseText);
     test.forEach(element => {
-        html += `<table><td>${element.nev}</td><td>${element.szam}</td></table>`
+        html += `<table>
+        <td class="contacts">${element.nev}</td>
+        <td class="contacts">${element.szam}</td>
+        <td class="button-cell contacts" style="width: 180px"><button class="table-btn">✏️</button><button class="table-btn">🗑️</button></td>
+        </table>`
     })
     document.getElementById("contacts").innerHTML = html;
 }
