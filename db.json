@@ -1,39 +1,13 @@
 {
-  "contents": [
-    {
-      "id": "0e56",
-      "nev": "asd",
-      "szam": "06203267814"
-    },
-    {
-      "id": "71e1",
-      "nev": "dsa",
-      "szam": "06306665894"
-    },
-    {
-      "id": "d541",
-      "nev": "hgdijf djghdijgf",
-      "szam": "06306665894"
-    },
-    {
-      "id": "4d61",
-      "nev": "asdasd",
-      "szam": "6546456454"
-    },
-    {
-      "id": "34c8",
-      "nev": "asdasda",
-      "szam": "6546456454"
-    },
-    {
-      "id": "c2f0",
-      "nev": "asdasdab",
-      "szam": "6546456454"
-    },
-    {
-      "id": "b46b",
-      "nev": "asdasdabc",
-      "szam": "6546456454"
-    }
-  ]
+    "contents": [{
+            "id": "0e56",
+            "nev": "John Doe",
+            "szam": "06203267814"
+        },
+        {
+            "id": "71e1",
+            "nev": "Jane Doe",
+            "szam": "06306665894"
+        }
+    ]
 }
