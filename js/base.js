@@ -1,7 +1,6 @@
 let xhr = new XMLHttpRequest();
 
-let url = "http://localhost:3000/contents"
-
+let url = "http://localhost:3000/contacts"
 xhr.open("GET", url, true)
 
 xhr.onload = function() {
@@ -11,7 +10,7 @@ xhr.onload = function() {
         html += `<table>
         <td class="contacts">${element.nev}</td>
         <td class="contacts">${element.szam}</td>
-        <td class="button-cell contacts" style="width: 180px"><button class="table-btn">✏️</button><button class="table-btn">🗑️</button></td>
+        <td class="button-cell contacts" style="width: 180px"><button class="table-btn">✏️</button><button class="table-btn" onclick="Delete('${element.id}')">🗑️</button></td>
         </table>`
     })
     document.getElementById("contacts").innerHTML = html;
@@ -47,4 +46,9 @@ async function Save() {
             break;
     }
 
+}
+
+function Delete(id) {
+    xhr.open("DELETE", `${url}/${id}`, true)
+    xhr.send(null);
 }
