@@ -1,13 +1,14 @@
 {
-    "contents": [{
-            "id": "0e56",
-            "nev": "John Doe",
-            "szam": "06203267814"
-        },
-        {
-            "id": "71e1",
-            "nev": "Jane Doe",
-            "szam": "06306665894"
-        }
-    ]
+  "contacts": [
+    {
+      "id": "0e56",
+      "nev": "John Doe",
+      "szam": "06203267814"
+    },
+    {
+      "id": "71e1",
+      "nev": "Jane Doe",
+      "szam": "06306665894"
+    }
+  ]
 }
