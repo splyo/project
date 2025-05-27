@@ -7,11 +7,15 @@ xhr.onload = function() {
     let html = "";
     let test = JSON.parse(xhr.responseText);
     test.forEach(element => {
-        html += `<table>
+        html += `
+        <tr>
         <td class="contacts">${element.nev}</td>
         <td class="contacts">${element.szam}</td>
-        <td class="button-cell contacts" style="width: 180px"><button class="table-btn">✏️</button><button class="table-btn" onclick="Delete('${element.id}')">🗑️</button></td>
-        </table>`
+        <td class="button-cell contacts" style="width: 180px">
+        <button class="btn btn-secondary">✏️</button>
+        <button class="btn btn-danger" onclick="Delete('${element.id}')">🗑️</button></td>
+        </tr>
+        `
     })
     document.getElementById("contacts").innerHTML = html;
 }
@@ -33,7 +37,6 @@ async function Save() {
     if (contentLength != 2) {
         exist = 1
     }
-
     switch (exist) {
         case 0:
             document.getElementById("status").innerHTML = ""
@@ -45,7 +48,6 @@ async function Save() {
             document.getElementById("status").innerHTML = "<h3>HIBA! A név már létezik az adatbázisban!</h3>"
             break;
     }
-
 }
 
 function Delete(id) {
