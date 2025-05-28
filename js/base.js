@@ -13,9 +13,12 @@ xhr.onload = function() {
         <tr>
         <td id="${element.id}-nev" contenteditable="false">${element.nev}</td>
         <td id="${element.id}-szam" contenteditable="false">${element.szam}</td>
-        <td class="button-cell" style="width: 180px">
-        <button id="${element.id}-edit" class="btn btn-secondary" onclick="Edit('${element.id}')">✏️</button>
-        <button id="${element.id}-delete" class="btn btn-danger" onclick="Delete('${element.id}')">🗑️</button></td>
+        <td class="text-end">
+        <button id="${element.id}-edit" class="btn btn-secondary pl-5" style="width: 70px" onclick="Edit('${element.id}')"><i class="bi bi-pencil-fill"></i></button>
+        </td>
+        <td>
+        <button id="${element.id}-delete" class="btn btn-danger" style="width: 70px" onclick="Delete('${element.id}')"><i class="bi bi-trash-fill"></i></button>
+        </td>
         </tr>
         `
     })
@@ -89,12 +92,28 @@ function Edit(id) {
             fields.forEach(element => {
                 document.getElementById(`${id}-${element}`).contentEditable = "true";
             });
-            document.getElementById(`${id}-edit`).innerHTML = "✅";
+            document.getElementById(`${id}-edit`).innerHTML = '<i class="bi bi-check-lg"></i>';
             document.getElementById(`${id}-edit`).className = "btn btn-success";
-            document.getElementById(`${id}-delete`).innerHTML = "❌"
+            document.getElementById(`${id}-delete`).innerHTML = '<i class="bi bi-x-lg"></i>'
             document.getElementById(`${id}-delete`).onclick = function() {
                 location.reload();
             }
         }
     }
+}
+
+function Theme() {
+    let crnt_theme = document.getElementById("theme").dataset.bsTheme
+
+    if (crnt_theme == "dark") {
+        document.getElementById("cng_theme").className = "btn btn-dark";
+        document.getElementById("cng_theme").innerHTML = '<i class="bi bi-moon-fill"></i>'
+        document.getElementById("theme").dataset.bsTheme = "light"
+    } else {
+        document.getElementById("cng_theme").className = "btn btn-light";
+        document.getElementById("cng_theme").innerHTML = '<i class="bi bi-brightness-high-fill"></i>'
+        document.getElementById("theme").dataset.bsTheme = "dark"
+
+    }
+
 }
