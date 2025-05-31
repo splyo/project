@@ -5,6 +5,8 @@ xhr.open("GET", url, true)
 
 let foglalt = null
 
+Theme(localStorage.getItem("theme"));
+
 xhr.onload = function() {
     let html = "";
     let test = JSON.parse(xhr.responseText);
@@ -24,7 +26,6 @@ xhr.onload = function() {
     })
     document.getElementById("contacts").innerHTML = html;
 }
-
 xhr.send()
 
 function CheckExist(nev) {
@@ -102,18 +103,23 @@ function Edit(id) {
     }
 }
 
-function Theme() {
+function Theme(thm) {
+    const isdark = thm == "dark";
+
+    document.getElementById("cng_theme").className = isdark ? "btn btn-dark" : "btn btn-light";
+    document.getElementById("cng_theme").innerHTML = isdark ? '<i class="bi bi-moon-fill"></i>' : '<i class="bi bi-brightness-high-fill"></i>';
+    document.getElementById("theme").dataset.bsTheme = isdark ? "light" : "dark"
+}
+
+function ThemeButton() {
     let crnt_theme = document.getElementById("theme").dataset.bsTheme
 
     if (crnt_theme == "dark") {
-        document.getElementById("cng_theme").className = "btn btn-dark";
-        document.getElementById("cng_theme").innerHTML = '<i class="bi bi-moon-fill"></i>'
-        document.getElementById("theme").dataset.bsTheme = "light"
+        Theme("dark")
+        localStorage.setItem("theme", "dark")
     } else {
-        document.getElementById("cng_theme").className = "btn btn-light";
-        document.getElementById("cng_theme").innerHTML = '<i class="bi bi-brightness-high-fill"></i>'
-        document.getElementById("theme").dataset.bsTheme = "dark"
-
+        Theme("light")
+        localStorage.setItem("theme", "light")
     }
 
 }
