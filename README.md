@@ -9,3 +9,8 @@ json-server telepítése windows-ra:
 
 a szerver futtatásához használja az alábbi parancsot:
   `json-server --watch db.json`
+
+A project készítéshez hozzájárultak:
+- Járó Marcell
+- Mészáros Bence
+- Jakab Bence
